@@ -9,6 +9,6 @@ install:
     - pip install coverage
 script:
     - python3 -m unittest
-    - python -m coverage run test_rpn.py
+    - python -m coverage run --omit test_rpn.py test_rpn.py
 after_success:
     - coveralls
