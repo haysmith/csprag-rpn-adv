@@ -4,6 +4,9 @@ python:
 os:
     - "linux"
 
+install:
+    - pip install coveralls
 script:
     - python3 -m unittest
-
+after_success:
+    - coveralls
