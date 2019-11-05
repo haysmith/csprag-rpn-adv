@@ -11,10 +11,12 @@ operators = {
     '^': operator.pow,
 }
 
-def calculate(myarg):
+def calculate(myarg, prev_result):
     stack = list()
     for token in myarg.split():
         try:
+            if token == "r":
+                token = prev_result
             token = int(token)
             stack.append(token)
         except ValueError:
@@ -29,8 +31,9 @@ def calculate(myarg):
     return stack.pop()
 
 def main():
+    result = 0
     while True:
-        result = calculate(raw_input("rpn calc> "))
+        result = calculate(raw_input("rpn calc> "), result)
         print("Result: ", result)
 
 if __name__ == '__main__':
