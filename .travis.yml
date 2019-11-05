@@ -5,10 +5,11 @@ os:
     - "linux"
 
 install:
-    - pip install coveralls
-    - pip install coverage
+    - pip3 install coveralls
+    - pip3 install coverage
+    - pip3 install colored
 script:
     - python3 -m unittest
-    - python -m coverage run --omit test_rpn.py test_rpn.py
+    - python3 -m coverage run --omit test_rpn.py test_rpn.py
 after_success:
     - coveralls
