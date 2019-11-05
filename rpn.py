@@ -11,8 +11,19 @@ operators = {
     '^': operator.pow,
 }
 
+def print_help():
+    print("Accepted Format: arg1 arg2 operator")
+    print("Supported Operators:")
+    op_string = ""
+    for item in operators.keys():
+        op_string += item + " "
+    print(op_string)
+
 def calculate(myarg, prev_result):
     stack = list()
+    if myarg == "help":
+        print_help()
+        raise ValueError
     for token in myarg.split():
         try:
             if token == "r":
@@ -33,7 +44,10 @@ def calculate(myarg, prev_result):
 def main():
     result = 0
     while True:
-        result = calculate(raw_input("rpn calc> "), result)
+        try:
+            result = calculate(raw_input("rpn calc> "), result)
+        except ValueError:
+            continue
         print("Result: ", result)
 
 if __name__ == '__main__':
